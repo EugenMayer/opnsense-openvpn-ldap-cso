@@ -8,7 +8,7 @@ stop:
 	vagrant stop
 
 checkout_core:
-	mkdir vendor
+	-p mkdir vendor
 	( [[ -d vendor/core ]] && cd vendor/core && git pull ) || git clone https://github.com/eugenmayer/core  --single-branch --branch feature/openvpn-ldap-cso-mapping vendor/core
 
 rm:	
