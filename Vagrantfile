@@ -38,8 +38,8 @@ Vagrant.configure("2") do |config|
       vb.customize ['modifyvm',:id, '--nic1', 'intnet', '--nic2', 'nat'] # swap the networks around
       vb.customize ['modifyvm', :id, '--natpf2', "ssh,tcp,127.0.0.1,10022,,22" ] #port forward
       vb.customize ['modifyvm', :id, '--natpf2', "https,tcp,127.0.0.1,10443,,443" ] #port forward
-      vb.customize ['modifyvm', :id, '--natpf2', "openvpn,tcp,127.0.0.1,11194,,1194" ] # openvpn
-      vb.customize ['modifyvm', :id, '--natpf2', "openvpn,udp,127.0.0.1,11194,,1194" ] # openvpn
+      vb.customize ['modifyvm', :id, '--natpf2', "openvpn_tcp,tcp,127.0.0.1,11194,,1194" ] # openvpn tcp
+      vb.customize ['modifyvm', :id, '--natpf2', "openvpn_udp,udp,127.0.0.1,11194,,1194" ] # openvpn udp
       #vb.customize ['modifyvm', :id, '--natpf1', "https,tcp,127.0.0.1,1443,,443" ] #port forward
     end
 
@@ -52,11 +52,6 @@ Vagrant.configure("2") do |config|
     test.vm.synced_folder "./vendor/core", "/root/core", type: "rsync",
         rsync__chown: false,
         rsync__exclude: "./core/.git/"
-    # this will register our local core from source and let opnsense run from that
-    # @see https://wiki.opnsense.org/development/workflow.html
-    test.vm.provision "shell", inline: "cd /root/core && make mount > /dev/null 2>&1 || true"
-    # running twice maybe fixes https://github.com/opnsense/core/issues/3276
-    test.vm.provision "shell", inline: "cd /root/core && make mount"
 
     # replace the public ssh key for the root user with the one vagrant deployed for comms before we restart - or we lock vagrant out
     test.vm.provision "inject-pubkey-into-config", type: "local_shell", command: "export PUB=$(ssh-keygen -f .vagrant/machines/opnsense/virtualbox/private_key -y | base64) && xmlstarlet ed --inplace -u '/opnsense/system/user/authorizedkeys' -v \"$PUB\" config-openvpn.xml"
@@ -70,6 +65,12 @@ Vagrant.configure("2") do |config|
       inline: "echo 'rebooting to apply config' && reboot"
 
     test.vm.provision "sleep-for-reboot", type: "local_shell", command: "echo 'waiting for the reboot' && sleep 50"
+
+    # this will register our local core from source and let opnsense run from that
+    # @see https://wiki.opnsense.org/development/workflow.html
+    test.vm.provision "shell", inline: "cd /root/core && make mount > /dev/null 2>&1 || true"
+    # running twice maybe fixes https://github.com/opnsense/core/issues/3276
+    test.vm.provision "shell", inline: "cd /root/core && make mount"
 
     # test.vm.provision "shell", inline: "cd /root/plugins/net/openvpn && make package && pkg add work/pkg/*.txz"
   end

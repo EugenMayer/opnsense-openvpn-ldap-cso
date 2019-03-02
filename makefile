@@ -20,7 +20,7 @@ clean:
 sync:
 	vagrant rsync
 	# double mount for fixing a bug https://github.com/opnsense/core/issues/3276
-	vagrant ssh -c "cd /root/core && (make mount || true ) && make mount"
+	# vagrant ssh -c "cd /root/core && (make mount || true ) && make mount"
 
 fetch_dist:
 	vagrant scp opnsense:/root/plugins/net/openvpn/work/pkg/'*.txz' ./dist/
