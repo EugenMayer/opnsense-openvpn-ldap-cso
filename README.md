@@ -16,6 +16,7 @@ make start
 - Connect to `localhost:10443` using "root/opnsense" and download the OpenVPN client configuration from the already configured server
 - you need the client to connect to localhost 11194 since that is what is NATted in vagrant - so set that host/port while exporting the client configuration
 - you can use "included1/included1" or "included2/included2" as users to connect to Openvpn, getting the ip `172.16.101` or `172.16.0102`  
+- set logging level to 3 if you want to see our mapping logs ( in the ldap server )
 
 1. You see the plugin deployed in the opnsense instance, access it by https://localhost:10443
 2. If you change code, just run `make sync`
