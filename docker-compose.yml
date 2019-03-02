@@ -1,0 +1,13 @@
+version: "2"
+services:
+  ldap:
+    image: eugenmayer/ldapexample
+    # important so our TLS certificate includes our hostname
+    container_name: ldap
+    ports:
+      # since we defined a local alias ip for our loopback device we can access this from the OPNsense box
+      # using 172.31.31.254:389
+      - 389:389
+    environment:
+      LDAP_TLS: 'true'
+      LDAP_TLS_VERIFY_CLIENT: 'never'

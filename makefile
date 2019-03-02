@@ -1,4 +1,7 @@
 start: vagrant_exists checkout_core
+	echo "starting our docker ldap service as our auth db"
+	docker-compose up -d
+	echo "starting opnsense"
 	vagrant up opnsense
 
 vagrant_exists:
@@ -8,15 +11,16 @@ stop:
 	vagrant stop
 
 checkout_core:
-	-p mkdir vendor
+	mkdir -p vendor
 	( [[ -d vendor/core ]] && cd vendor/core && git pull ) || git clone https://github.com/eugenmayer/core  --single-branch --branch feature/openvpn-ldap-cso-mapping vendor/core
 
-rm:	
+clean:
 	vagrant destroy -f
 
-sync_plugin:
+sync:
 	vagrant rsync
-	vagrant ssh -c "cd /root/plugins/net/openvpn && make upgrade"
+	# double mount for fixing a bug https://github.com/opnsense/core/issues/3276
+	vagrant ssh -c "cd /root/core && (make mount || true ) && make mount"
 
 fetch_dist:
 	vagrant scp opnsense:/root/plugins/net/openvpn/work/pkg/'*.txz' ./dist/
