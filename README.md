@@ -20,7 +20,8 @@ make start
 
 1. You see the plugin deployed in the opnsense instance, access it by https://localhost:10443
 2. If you change code, just run `make sync`
-3. Its all on you now :)
+3. If you want to ssh into the opnsense box use `vagrant ssh` with "opnsense" as password
+4. Its all on you now :)
 
 ### Stop ( pause )
 To stop the vm ( not losing state, continue later )

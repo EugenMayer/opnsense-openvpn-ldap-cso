@@ -68,9 +68,7 @@ Vagrant.configure("2") do |config|
 
     # this will register our local core from source and let opnsense run from that
     # @see https://wiki.opnsense.org/development/workflow.html
-    test.vm.provision "shell", inline: "cd /root/core && make mount > /dev/null 2>&1 || true"
-    # running twice maybe fixes https://github.com/opnsense/core/issues/3276
-    test.vm.provision "shell", inline: "cd /root/core && make mount"
+    test.vm.provision "shell", inline: "cd /root/core && make package && make mount"
 
     # test.vm.provision "shell", inline: "cd /root/plugins/net/openvpn && make package && pkg add work/pkg/*.txz"
   end
