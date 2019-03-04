@@ -184,7 +184,14 @@
       <scope>system</scope>
       <groupname>admins</groupname>
       <password>$2b$10$YRVoF4SgskIsrXOvOQjGieB9XqHPRra9R7d80B3BZdbY/j21TwBfS</password>
+      <authorizedkeys>c3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFESWhYRFB1aXVwQmlXbXEvTHk2WHJkZGFGa2Z1MFR5ZmZ4N2RoQk9Na1VTcHBmOVoxSnFxanRVeHRDNFBUMUtJblgvYVVLUkpvZjM4TE9YWnFYaVkvODNpK1NPRzNRVm00YllOa1RWUFBwNWxUU2Q2bXM3SlBnejVDMURkYzdPVmlLWHdXb1VhR3FnVE5uUEptd1JxdTdQY0Y3TFd5Z0ZWYU1GV3FUNmJJQ2d0RGg0WVVUcVJxU0U3elRTZUphUlczbll6YnRtOElnbHdWNzJzYTFnazdDMk1NY25tQXplQXQ4Y0x0WmQwV0svbk1WYWNYOHRHdVdlUGxKM1k2cU5ZOWFscW92WHNzRUlWVTh3Rm4wMEtNV0hvNmdXSXY3NlVyTk1KcURLTnNVVk0waHdhMjcrMFkwRDNBTW14eFZBdTFuTzhndVo3UFJpUzFQdjBoUG1YTXgK</authorizedkeys>
       <uid>0</uid>
+      <apikeys>
+        <item>
+          <key>5GWbPwKfXVLzgJnewKuu1IPw2HS7s510jKHmTM+rLA1y9VfEFE57yj/kJiWbXREB0EgpBK48u4gnyign</key>
+          <secret>$6$$NKsOz2RKrUYnVAIF1GCf2IoFoS7nU35Z.Xsk1PN6SCeCZEl/ZYWvMHFEDi0ICdhxAPW/Y4A5.xfFMhjiInQ0f.</secret>
+        </item>
+      </apikeys>
     </user>
     <nextuid>2000</nextuid>
     <nextgid>2000</nextgid>

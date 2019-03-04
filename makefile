@@ -1,6 +1,6 @@
 start: vagrant_exists checkout_core
 	echo "starting our docker ldap service as our auth db"
-	docker-compose up -d
+	docker-compose up -d || true
 	echo "starting opnsense"
 	vagrant up opnsense
 
