@@ -40,6 +40,13 @@ make clean
 `https://localhost:10443` or `ssh -p 10022 root@localhost`
 - username: root
 - password: opnsense
+                          
+#### API credentials
+
+Use the key as username, secret as password
+
+key=PBa+SNy78z/Z4BhVR5JQUGTQFqMQhlpwAif7JSgYAlNICbR9H5Nou3vpbIFAq83I5zizInbV/RE1b5xW
+secret=5WLNgjlP+vSRol1mHEz+ZvuNG7MVXK/fNkMYqx5hvlLWbebN+N4V5PF7K3CUOlJhtPPo+nqMKOb5WgmK
                            
 
 
